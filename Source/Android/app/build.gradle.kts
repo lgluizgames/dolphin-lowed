@@ -81,11 +81,12 @@ android {
         // Signed by debug key disallowing distribution on Play Store.
         // Attaches "debug" suffix to version and package name, allowing installation alongside the release build.
         debug {
-            resValue("string", "app_name_suffixed", "Dolphin Debug")
-            applicationIdSuffix = ".debug"
-            versionNameSuffix = "-debug"
-            isJniDebuggable = true
-        }
+    resValue("string", "app_name_suffixed", "Dolphin Low-End")
+    applicationIdSuffix = ".lowend"
+    versionNameSuffix = "-lowend"
+    isDebuggable = false
+    isJniDebuggable = false
+}
     }
 
     externalNativeBuild {
@@ -102,11 +103,10 @@ android {
                 arguments(
                     "-DANDROID_STL=c++_static",
                     "-DANDROID_SUPPORT_FLEXIBLE_PAGE_SIZES=ON",
-                    "-DCMAKE_BUILD_TYPE=RelWithDebInfo"
+                    "-DCMAKE_BUILD_TYPE=Release"
                     // , "-DENABLE_GENERIC=ON"
                 )
-                abiFilters("arm64-v8a", "x86_64") //, "armeabi-v7a", "x86"
-
+                abiFilters("arm64-v8a")
                 // Uncomment the line below if you don't want to build the C++ unit tests
                 //targets("main", "hook_impl", "main_hook", "gsl_alloc_hook", "file_redirect_hook")
             }
